@@ -1,4 +1,4 @@
-3994473a65f773abcdee4f1d20f3a175 *DESCRIPTION
+28fe3753f4dc46cd26344a044a51c26b *DESCRIPTION
 e5a5de9aab54765c0616f49f800ca75c *NAMESPACE
 bfdf847f49266ebf3c8d2fa4ed89c504 *R/find.defaultMethod.R
 d66f61410ee03089b42ee0c3963c15d1 *R/mice.impute.2l.2stage.bin.R
@@ -8,15 +8,15 @@ e881fb13cee0198926d5edb5c16b1643 *R/mice.impute.2l.2stage.norm.R
 18f857144db3504f9e8399a24f26fe03 *R/mice.impute.2l.2stage.pmm.R
 d892d363d720246f6cd8a3510b7d1fd5 *R/mice.impute.2l.2stage.pois.R
 9e3c5713b37eb366d2a8037f99007c4e *R/mice.impute.2l.2stage.pois.intern.R
-3ce17c03e37fdd4e4b1260ca70237e75 *R/mice.impute.2l.glm.bin.R
-601a03971828d55b18348f2f43a87897 *R/mice.impute.2l.glm.norm.R
-1426e898b063f798f81a0a5c0a576e4a *R/mice.impute.2l.glm.pois.R
-5f949934f41082f0c1e70c76f3a4f728 *R/mice.impute.2l.jomo.R
+0e74ae8c7c89d3459abaed6bedac2b55 *R/mice.impute.2l.glm.bin.R
+d2ee6c43b03b8f741c2e269eb81ba4ba *R/mice.impute.2l.glm.norm.R
+49589543325d2a56f5f6a7ae5492b1be *R/mice.impute.2l.glm.pois.R
+c0e743b0ee10e959e5b4ed8813b8cf27 *R/mice.impute.2l.jomo.R
 9509d0826ed1247c9c4549339cf05449 *R/mice.par.R
-9f9f813dfe68575d7e12a5544f21bfc3 *R/micemd-internal.R
+7bba730ee5674b0be2c885b28a5362ac *R/micemd-internal.R
 95f1e5cba0ad6b8306c60a7e783c3071 *R/plot.mira.R
-6ef5d41e5cf504515ab416243d56be4b *data/CHEM97Na.rda
-f7889d1eddeec65efccfc2222a220f4e *data/IPDNa.rda
+6a72b639a77464da4d9fe415f28acc89 *data/CHEM97Na.rda
+6e7179d26b93cd03e38004b75356c5ec *data/IPDNa.rda
 8509e602d042b91bf4052c70f15cf8d4 *man/CHEM97Na.Rd
 3c9d3ee60b54b652c743b26a3b388d81 *man/IPDNa.Rd
 27810c356bf916120e05e775a6da1fb5 *man/find.defaultMethod.Rd
@@ -29,5 +29,5 @@ efdfcfb2bd385f7eac222eb048ff24e5 *man/mice.impute.2l.glm.norm.Rd
 314115803b412cd7fac5c12dc441145c *man/mice.impute.2l.glm.pois.Rd
 fddc06b04f3ad0f7e95d016fe8c96dfc *man/mice.impute.2l.jomo.Rd
 3616afd9ab9b7cfcecdda6cddbc463bd *man/mice.par.Rd
-67615195aad665015157c17c3bafd093 *man/micemd-package.Rd
+f334ce609add45536bb8c8b61820a82d *man/micemd-package.Rd
 07b112e19c4f3a1ba9213e906addad7b *man/plot.mira.Rd

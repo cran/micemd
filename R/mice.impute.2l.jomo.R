@@ -1,5 +1,30 @@
 mice.impute.2l.jomo <-
 function(y, ry, x,type,nburn=200,...){
+  finddata<-function(y,ry,x,type){
+    
+    #identification indicatrice
+    debut<-which(regexpr(pattern = ".1",text = names(x))>0)
+    varquali<-gsub(".1",replacement = "",names(x)[debut])
+    indexindic<-sapply(varquali,FUN=function(nom,xx){which(regexpr(pattern = nom,text = names(xx))>0)},xx=x)
+    nomvar<-names(x);nomvar[unlist(indexindic)]<-NA;nomvar[is.na(nomvar)]<-names(indexindic)
+    names(type)<-unique(nomvar)
+    #transformation en facteur
+    res<-sapply(indexindic,FUN=function(variable,xx){
+      tab.0<-1-rowSums(xx[,variable,drop=FALSE])
+      tab<-cbind.data.frame(tab.0,xx[,variable])
+      res<-apply(tab,1,which.max)
+      res<-sapply(res,as.factor)
+      return(res)
+    },xx=x)
+    if(length(indexindic)>0){
+      don<-cbind.data.frame(x[,-unlist(indexindic),drop=FALSE],res)
+    }else{
+      don<-x
+    }
+    res<-list(x=don,type=type[names(don)])#clust,quanti, quali
+    return(res)
+  }
+  
   jomo1ran.silent<-function (Y, X = NULL, Z = NULL, clus, beta.start = NULL, u.start = NULL, 
                              l1cov.start = NULL, l2cov.start = NULL, l1cov.prior = NULL, 
                              l2cov.prior = NULL, nburn = nburn, nbetween = 1, nimp = 2, 
@@ -145,14 +170,14 @@ function(y, ry, x,type,nburn=200,...){
     
   }
   
-  
-  names(x) <- paste("V",1:ncol(x),sep="")
-  clust <- names(x)[type==(-2)]
-  fixe <- names(x)[type>0]
+  xx<-finddata(y,ry,x,type)$x
+  names(xx) <- paste("V",1:ncol(x),sep="")
+  clust <- "V1"
+  fixe <- names(xx)[type>0]
   yna<-y
   yna[!ry]<-NA
   
-  res.jomo<-try(jomo1ran.silent(Y=cbind(yna,x[,fixe,drop=FALSE]),clus=x[,clust,drop=FALSE],
+  res.jomo<-try(jomo1ran.silent(Y=cbind.data.frame(yna,xx[,fixe,drop=FALSE]),clus=xx[,clust,drop=FALSE],
                                 nburn=nburn,
                                 nbetween=1, nimp=2, output=0, out.iter=nburn,meth="random"))
   

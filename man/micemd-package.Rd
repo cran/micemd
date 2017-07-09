@@ -11,8 +11,8 @@ Addons for the mice package to perform multiple imputation using chained equatio
 \tabular{ll}{
 Package: \tab micemd\cr
 Type: \tab Package\cr
-Version: \tab 1.0.0\cr
-Date: \tab 2017-04-13\cr
+Version: \tab 1.0.2\cr
+Date: \tab 2017-06-29\cr
 License: \tab GPL \cr
 LazyLoad: \tab yes\cr
 }

@@ -1,5 +1,14 @@
 mice.impute.2l.glm.bin <-
 function(y, ry, x,type,...){
+  Diag<-function(xx=1){
+    res<-diag(xx)
+    if(class(xx)=="numeric"){
+      if((length(xx)==1)&(xx[1]<=1)){res<-as.matrix(xx)}
+    }else if(setequal(dim(xx),c(1,1))){
+      res<-xx 
+    }
+    return(res)
+  }
   # the main code
   x<-cbind.data.frame(rep(1,nrow(x)), x)
   names(x) <- paste("V",1:ncol(x),sep="")
@@ -46,7 +55,7 @@ function(y, ry, x,type,...){
   temp <- ginv(lambda)
   ev <- eigen(temp)
   
-
+  
   if (mode(ev$values) == "complex") {
     ev$values <- suppressWarnings(as.numeric(ev$values))
     ev$vectors <- suppressWarnings(matrix(as.numeric(ev$vectors),nrow=length(ev$values)))
@@ -54,11 +63,17 @@ function(y, ry, x,type,...){
   if(sum(ev$values<0)>0)
   {
     ev$values[ev$values<0]<-0
-    temp <- ev$vectors%*%diag(ev$values)%*%t(ev$vectors)
+    temp <- ev$vectors%*%Diag(ev$values)%*%t(ev$vectors)
   }
-
-  deco <- (ev$vectors)%*%sqrt(diag(ev$values))
-  temp.psi.star <- rWishart(1, nrow(rancoef), diag(nrow(lambda)))[,,1]
+  
+  deco <- (ev$vectors)%*%sqrt(Diag(ev$values))
+  if(nrow(lambda)>1){
+    #multivariate case
+    temp.psi.star <- rWishart(1, nrow(rancoef), Diag(nrow(lambda)))[,,1]
+  }else{
+    #univariate case
+    temp.psi.star <- matrix(rchisq(1, nrow(rancoef)),1,1)
+  }
   psi.star <- ginv(deco%*%temp.psi.star%*%t(deco)) 
   
   #### psi.star positive definite?
@@ -69,9 +84,9 @@ function(y, ry, x,type,...){
   if(sum(valprop$values<0)>0)
   {
     valprop$values[valprop$values<0]<-0
-    psi.star<-valprop$vectors%*%diag(valprop$values)%*%t(valprop$vectors)
+    psi.star<-valprop$vectors%*%Diag(valprop$values)%*%t(valprop$vectors)
   }
-
+  
   
   misindicator<-aggregate(as.data.frame(ry),by=list(clust=x[,clust]),FUN=function(x){sum(x)!=length(x)})
   

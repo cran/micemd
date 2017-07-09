@@ -1,5 +1,14 @@
 mice.impute.2l.glm.norm <-
 function(y, ry, x,type,...){
+  Diag<-function(xx=1){
+    res<-diag(xx)
+    if(class(xx)=="numeric"){
+      if((length(xx)==1)&(xx[1]<=1)){res<-as.matrix(xx)}
+    }else if(setequal(dim(xx),c(1,1))){
+      res<-xx 
+    }
+    return(res)
+  }
   # the main code
   x<-cbind.data.frame(rep(1,nrow(x)), x)
   names(x) <- paste("V",1:ncol(x),sep="")
@@ -55,13 +64,19 @@ function(y, ry, x,type,...){
   if(sum(ev$values<0)>0)
   {
     ev$values[ev$values<0]<-0
-    if(length(ev$values)>1){D<-diag(ev$values)}else{D<-ev$values}
+    if(length(ev$values)>1){D<-Diag(ev$values)}else{D<-ev$values}
     temp <- ev$vectors[,,drop=F]%*%D%*%t(ev$vectors[,,drop=F])
   }
   
-  if(length(ev$values)>1){D<-diag(ev$values)}else{D<-ev$values}
+  if(length(ev$values)>1){D<-Diag(ev$values)}else{D<-ev$values}
   deco <- (ev$vectors[,,drop=F])%*%sqrt(D)
-  temp.psi.star <- rWishart(1, nrow(rancoef), diag(nrow(lambda)))[,,1]
+  if(nrow(lambda)>1){
+    #multivariate case
+    temp.psi.star <- rWishart(1, nrow(rancoef), Diag(nrow(lambda)))[,,1]
+  }else{
+    #univariate case
+    temp.psi.star <- matrix(rchisq(1, nrow(rancoef)),1,1)
+  }
   psi.star <- ginv(deco%*%temp.psi.star%*%t(deco)) 
   
   #### psi.star positive definite?
@@ -72,7 +87,7 @@ function(y, ry, x,type,...){
   if(sum(valprop$values<0)>0)
   {
     valprop$values[valprop$values<0]<-0
-    psi.star<-valprop$vectors%*%diag(valprop$values)%*%t(valprop$vectors)
+    psi.star<-valprop$vectors%*%Diag(valprop$values)%*%t(valprop$vectors)
   }
   
   
@@ -92,7 +107,7 @@ function(y, ry, x,type,...){
     }
     else if(i%in%lev[misindicator_spor[,2]]){
       # sporadically missing
-      Sigma2i<-sigma2*diag(sum(ry & x[,clust]==i))
+      Sigma2i<-sigma2*Diag(sum(ry & x[,clust]==i))
       temp<-tcrossprod(psi.star,as.matrix(Z[ry & x[,clust]==i,]))%*%ginv(tcrossprod(as.matrix(Z[ry & x[,clust]==i,])%*%psi.star,as.matrix(Z[ry & x[,clust]==i,]))+Sigma2i)
       esp_bi<-temp%*%(y[ry & x[,clust]==i]-as.matrix(X[ry & x[,clust]==i,])%*%beta.star)
       var_bi<-psi.star-temp%*%as.matrix(Z[ry & x[,clust]==i,])%*%psi.star
