@@ -29,13 +29,15 @@ Other named arguments.
 }
 }
 \details{
-Imputes univariate two-level continuous variable from a homoscedastic normal model. The variability on the parameters of the imputation is propagated according to an explicit Bayesian modelling. More precisely, improper prior distributions are used for regression coefficients and variances components. The method is recommended for datasets with a small number of clusters and a small  number of individuals per cluster. Otherwise, confidence intervals after applying analysis method on the multiply imputed dataset tend to be anti-conservative. In addition, the imputation can be highly time consumming otherwise.
+Imputes univariate two-level continuous variable from a homoscedastic normal model. The variability on the parameters of the imputation is propagated according to an explicit Bayesian modelling. More precisely, improper prior distributions are used for regression coefficients and variances components. The method is recommended for datasets with a small number of clusters and a small number of individuals per cluster. Otherwise, confidence intervals after applying analysis method on the multiply imputed dataset tend to be anti-conservative. In addition, the imputation can be highly time consumming.
 }
 \value{
 A vector of length \code{nmis} with imputations.
 }
 
 \references{
+Jolani, S. (2017) Hierarchical imputation of systematically and sporadically missing data: An approximate Bayesian approach using chained equations. Biometrical Journal <doi:10.1002/bimj.201600220>
+
 Jolani, S., Debray, T. P. A., Koffijberg, H., van Buuren, S., and Moons, K. G. M. (2015). Imputation
 of systematically missing predictors in an individual participant data meta-analysis: a
 generalized approach using MICE. Statistics in Medicine, 34(11):1841{1863}. <doi:10.1002/sim.6451>
@@ -44,7 +46,7 @@ Audigier, V., White, I. ,  Jolani ,S.  Debray, T.,  Quartagno, M., Carpenter, J.
 Multiple imputation for multilevel data with continuous and binary variables. ArXiv e-prints <arXiv:1702.00971>, 2017.
 }
 \author{
-Vincent Audigier \email{vincent.audigier@univ-paris-diderot.fr} from the R code of Shahab Jolani.
+Vincent Audigier \email{vincent.audigier@cnam.fr} from the R code of Shahab Jolani.
 }
 \seealso{
 \code{\link{mice},\link{mice.impute.2l.2stage.norm},\link{mice.impute.2l.jomo}}

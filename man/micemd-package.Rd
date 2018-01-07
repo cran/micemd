@@ -20,7 +20,7 @@ LazyLoad: \tab yes\cr
 \author{
 Vincent Audigier, Matthieu Resche-Rigon
 
-Maintainer: Vincent Audigier <vincent.audigier@univ-paris-diderot.fr>
+Maintainer: Vincent Audigier <vincent.audigier@cnam.fr>
 }
 \references{
 Audigier, V., White, I. ,  Jolani ,S.  Debray, T.,  Quartagno, M., Carpenter, J., van Buuren, S. and Resche-Rigon, M.

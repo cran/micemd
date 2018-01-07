@@ -45,7 +45,7 @@ Audigier, V., White, I. ,  Jolani ,S.  Debray, T.,  Quartagno, M., Carpenter, J.
 Multiple imputation for multilevel data with continuous and binary variables. ArXiv e-prints <arXiv:1702.00971>, 2017.
 }
 \author{
-Vincent Audigier \email{vincent.audigier@univ-paris-diderot.fr} from the R code of Shahab Jolani.
+Vincent Audigier \email{vincent.audigier@cnam.fr} from the R code of Shahab Jolani.
 }
 \seealso{
 \code{\link{mice},\link{mice.impute.2l.2stage.bin},\link{mice.impute.2l.jomo}}

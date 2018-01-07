@@ -42,7 +42,7 @@ of systematically missing predictors in an individual participant data meta-anal
 generalized approach using MICE. Statistics in Medicine, 34(11):1841{1863}. <doi:10.1002/sim.6451>
 }
 \author{
-Vincent Audigier \email{vincent.audigier@univ-paris-diderot.fr} from the R code of Shahab Jolani.
+Vincent Audigier \email{vincent.audigier@cnam.fr} from the R code of Shahab Jolani.
 }
 \seealso{
 \code{\link{mice},\link{mice.impute.2l.2stage.pois}}

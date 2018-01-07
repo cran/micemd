@@ -24,7 +24,7 @@ Extra arguments for \code{\link{plot.mira}}
 Schafer, J. L. (1997). Analysis of Incomplete Multivariate Data. Chapman & Hall/CRC, London
 }
 \author{
-Vincent Audigier \email{vincent.audigier@univ-paris-diderot.fr}
+Vincent Audigier \email{vincent.audigier@cnam.fr}
 }
 
 \seealso{

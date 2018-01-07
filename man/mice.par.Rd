@@ -151,7 +151,7 @@ multiple imputation strategies for the statistical analysis of incomplete
 data sets.} Dissertation. Rotterdam: Erasmus University.
 }
 \author{
-Vincent Audigier \email{vincent.audigier@univ-paris-diderot.fr}
+Vincent Audigier \email{vincent.audigier@cnam.fr}
 }
 
 

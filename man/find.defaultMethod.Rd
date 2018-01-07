@@ -77,7 +77,7 @@ and sporadically missing multilevel data. Statistical Methods in Medical Researc
 To appear. <doi:10.1177/0962280216666564>
 }
 \author{
-Vincent Audigier \email{vincent.audigier@univ-paris-diderot.fr}
+Vincent Audigier \email{vincent.audigier@cnam.fr}
 }
 %\note{
 %%  ~~further notes~~

@@ -32,14 +32,14 @@ Other named arguments.
 }
 }
 \details{
-Contrary to the approach developped in the R jomo package, the imputation is here sequentiallyperformed through a FCS approach, instead of imputing all variables simulatenously. The motivation for such a method is that jomo presents some advantages over other imputation methods, but not always for any type of variables (binary or continuous). By proposing a FCS version of jomo, we allow imputation of mixed variables (continuous and binary), while taking the best of jomo and of other imputation methods. To impute one variable according to this method, other variables are assumed to be full, like in any FCS approach. The imputation function is a direct use of the R function jomo1ran from the jomo package. The argument \code{meth} is tuned to "random" to allow covariance matrices drawn from an inverse Wishart distribution. Only intercept are considered in covariates (\code{X=NULL} and \code{Z=NULL}), while the multivariate outcome corresponds to all variables of the datasets.
+Contrary to the approach developped in the R jomo package, the imputation is here sequentially performed through a FCS approach, instead of imputing all variables simulatenously. The motivation for such a method is that jomo presents some advantages over other imputation methods, but not always for any type of variables (binary or continuous). By proposing a FCS version of jomo, we allow imputation of mixed variables (continuous and binary), while taking the best of jomo and of other imputation methods. To impute one variable according to this method, other variables are assumed to be full, like in any FCS approach. The imputation function is a direct use of the R function jomo1ran from the jomo package. The argument \code{meth} is tuned to "random" to allow covariance matrices drawn from an inverse Wishart distribution. Only intercept are considered in covariates (\code{X=NULL} and \code{Z=NULL}), while the multivariate outcome corresponds to all variables of the datasets.
 }
 \value{
 A vector of length \code{nmis} with imputations.
 }
 
 \author{
-Vincent Audigier \email{vincent.audigier@univ-paris-diderot.fr} from the R code of Matteo Quartagno.
+Vincent Audigier \email{vincent.audigier@cnam.fr} from the R code of Matteo Quartagno.
 }
 
 \references{
