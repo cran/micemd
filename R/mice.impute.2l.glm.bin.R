@@ -31,7 +31,7 @@ function(y, ry, x,type,...){
   
   
   randmodel <- paste("yobs ~ ", paste(fixe[-1], collapse="+"),
-                     "+ ( 1 ",if(length(rande)>1){c("+", paste(rande[-1],collapse="+"))}, 
+                     "+ ( 1 ",if(length(rande)>1){paste("+", rande[-1],collapse="+")}, 
                      "|", clust, ")") # [-1] to remove intercept, if to handle cases without covariate with random effect
   
   suppressWarnings(fit <- try(glmer(formula(randmodel), 

@@ -1,22 +1,15 @@
 \name{micemd-package}
 \alias{micemd-package}
+\alias{micemd}
 \docType{package}
 \title{
 Multiple Imputation by Chained Equations with Multilevel Data
+
 }
 \description{
-Addons for the mice package to perform multiple imputation using chained equations with two-level data. Includes imputation methods specifically handling sporadically and systematically missing values (Resche-Rigon et al. 2013). Imputation of continuous, binary or count variables are available. Following the recommendations of Audigier, V. et al (2017), the choice of the imputation method for each variable can be facilitated by a default choice tuned according to the structure of the incomplete dataset. Allows parallel calculation for mice.
+Addons for the mice package to perform multiple imputation using chained equations with two-level data. Includes imputation methods specifically handling sporadically and systematically missing values (Resche-Rigon et al. 2013). Imputation of continuous, binary or count variables are available. Following the recommendations of Audigier, V. et al (2018), the choice of the imputation method for each variable can be facilitated by a default choice tuned according to the structure of the incomplete dataset. Allows parallel calculation for mice.
 }
-\details{
-\tabular{ll}{
-Package: \tab micemd\cr
-Type: \tab Package\cr
-Version: \tab 1.0.2\cr
-Date: \tab 2017-06-29\cr
-License: \tab GPL \cr
-LazyLoad: \tab yes\cr
-}
-}
+
 \author{
 Vincent Audigier, Matthieu Resche-Rigon
 
@@ -24,7 +17,7 @@ Maintainer: Vincent Audigier <vincent.audigier@cnam.fr>
 }
 \references{
 Audigier, V., White, I. ,  Jolani ,S.  Debray, T.,  Quartagno, M., Carpenter, J., van Buuren, S. and Resche-Rigon, M.
-Multiple imputation for multilevel data with continuous and binary variables. ArXiv e-prints <arXiv:1702.00971>, 2017.
+Multiple imputation for multilevel data with continuous and binary variables (2018). Statistical Science. <doi:10.1214/18-STS646>.
 
 
 Jolani, S., Debray, T. P. A., Koffijberg, H., van Buuren, S., and Moons, K. G. M. (2015). Imputation

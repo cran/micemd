@@ -5,7 +5,7 @@
 A simulated Individual Patient Data (IPD) meta-analysis with missing values.
 }
 \description{
-This dataset is a simulated version of an IPD meta-analysis consisting of 28 studies focusing on risk factors in acute heart failure (GREAT, 2013). Each study includes a list of patient characteristics and potential risk factors. Each of them is incomplete, leading to sporadically missing values (Resche-Rigon, et al 2013). In addition, some variables have been collected on some studies only, leading to systematically missing values. More details on the original dataset are provided in Audigier et al. (2017). To mimic the real data, a general location model has been fitted on each study (Schafer, 1997). Then, each study has been generated according to the estimated parameters. Finally, missing values have been allocated similarly to the original dataset.
+This dataset is a simulated version of an IPD meta-analysis consisting of 28 studies focusing on risk factors in acute heart failure (GREAT, 2013). Each study includes a list of patient characteristics and potential risk factors. Each of them is incomplete, leading to sporadically missing values (Resche-Rigon, et al 2013). In addition, some variables have been collected on some studies only, leading to systematically missing values. More details on the original dataset are provided in Audigier et al. (2018). To mimic the real data, a general location model has been fitted on each study (Schafer, 1997). Then, each study has been generated according to the estimated parameters. Finally, missing values have been allocated similarly to the original dataset.
 }
 \usage{data("IPDNa")}
 \format{
@@ -24,7 +24,7 @@ This dataset is a simulated version of an IPD meta-analysis consisting of 28 stu
   }
 }
 \details{
-For more details, see Audigier et al. (2017)
+For more details, see Audigier et al. (2018)
 }
 \source{
 GREAT Network (2013).  Managing acute heart failure in the ed - case studies
@@ -32,7 +32,7 @@ from the acute heart failure academy.  http://www.greatnetwork.org
 }
 \references{
 Audigier, V., White, I. ,  Jolani ,S.  Debray, T.,  Quartagno, M., Carpenter, J., van Buuren, S. and Resche-Rigon, M.
-Multiple imputation for multilevel data with continuous and binary variables. ArXiv e-prints <arXiv:1702.00971>, 2017.
+Multiple imputation for multilevel data with continuous and binary variables (2018). Statistical Science. <doi:10.1214/18-STS646>.
 
 Resche-Rigon, M., White, I. R., Bartlett, J., Peters, S., Thompson, S., and on behalf of the
 PROG-IMT Study Group (2013). Multiple imputation for handling systematically missing
