@@ -8,7 +8,7 @@ function(x, ...){
   for(ii in 2:length(x$analyses)){
     tmp<-x
     tmp$analyses<-tmp$ana[1:ii]
-    res.out[,ii-1]<-2*qt(.975,summary(pool(tmp))[,"df"])*(summary(pool(tmp))[,"se"])
+    res.out[,ii-1]<-2*qt(.975,summary(pool(tmp))[,"df"])*(summary(pool(tmp))[,"std.error"])
   }
   nbqi<-length(rownames(res.out))
   Mfrow<-c(min(nbqi,4),1+(nbqi-1)%/%4)

@@ -11,7 +11,7 @@ Similarly to mice.impute.2l.stage.norm, this function imputes univariate two-lev
 mice.impute.2l.2stage.pmm(y, ry, x, type,
                               method_est = "mm",
                               incluster = FALSE,
-                              k = 5, ...)
+                              kpmm = 5, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -33,7 +33,7 @@ Vector of string given the version of the estimator to used. Choose \code{method
   \item{incluster}{
 Boolean indicating if the imputed values are drawn from the cluster or from the full dataset. By default imputed values are drawn from all available clusters \code{incluster=FALSE}.
 }
-  \item{k}{
+  \item{kpmm}{
 The size of the donor pool among which a draw is made. The default is \code{k = 5}.
 }
 \item{\dots}{

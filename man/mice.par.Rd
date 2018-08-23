@@ -8,15 +8,10 @@ Parallel calculations for Multivariate Imputation by Chained Equations
 Parallel calculations for Multivariate Imputation by Chained Equations using the R package \code{parallel}.
 }
 \usage{
-mice.par(don.na, m = 5, method = vector("character", length = ncol(don.na)),
-  predictorMatrix = (1 - diag(1, ncol(don.na))),
-  visitSequence = (1:ncol(don.na))[apply(is.na(don.na), 2, any)],
-  form = vector("character", length = ncol(don.na)),
-  post = vector("character", length = ncol(don.na)),
-  defaultMethod = c("pmm", "logreg", "polyreg", "polr"),
-  maxit = 5, diagnostics = TRUE, seed = NA, imputationMethod = NULL,
-  defaultImputationMethod = NULL, data.init = NULL,
-  nnodes = 5, path.outfile = NULL, ...)
+mice.par(don.na, m = 5, method = NULL, predictorMatrix, where = NULL,
+visitSequence = NULL, blots = NULL, post = NULL, blocks, formulas,
+defaultMethod = c("pmm", "logreg", "polyreg", "polr"), maxit = 5,
+seed = NA, data.init = NULL, nnodes = 5, path.outfile = NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -48,6 +43,14 @@ diagonal of \code{predictorMatrix} must be zero. The default for
 (sometimes called massive imputation). Note: For two-level imputation codes
 '2' and '-2' are also allowed.
 }
+
+\item{where}{A data frame or matrix with logicals of the same dimensions 
+as \code{data} indicating where in the data the imputations should be 
+created. The default, \code{where = is.na(data)}, specifies that the
+missing data should be imputed. The \code{where} argument may be used to 
+overimpute observed data, or to skip imputations for selected missing values.}
+
+
   \item{visitSequence}{
 A vector of integers of arbitrary length, specifying the
 column indices of the visiting sequence. The visiting sequence is the column
@@ -61,20 +64,41 @@ from left to right. It is possible to specify one of the keywords
 \code{'revmonotone'} (reverse of monotone). The keyword should be supplied as
 a string and may be abbreviated.
 }
-  \item{form}{
-A vector of strings with length \code{ncol(data)}, specifying
-formulae. Each string is parsed and executed within the \code{sampler()}
-function to create terms for the predictor.  The default is to do nothing,
-indicated by a vector of empty strings \code{''}.  The main value
-lies in the easy specification of interaction terms.  The user must
-ensure that the set of variables in the formula match those in \code{predictors}.
-}
+
+\item{blots}{A named \code{list} of \code{alist}'s that can be used 
+to pass down arguments to lower level imputation function. The entries
+of element \code{blots[[blockname]]} are passed down to the function
+called for block \code{blockname}.}
+
+
   \item{post}{
 A vector of strings with length \code{ncol(data)}, specifying
 expressions. Each string is parsed and executed within the \code{sampler()}
 function to postprocess imputed values.  The default is to do nothing,
 indicated by a vector of empty strings \code{''}.
 }
+
+\item{blocks}{List of vectors with variable names per block. List elements 
+may be named to identify blocks. Variables within a block are 
+imputed by a multivariate imputation method
+(see \code{method} argument). By default each variable is placed 
+into its own block, which is effectively
+fully conditional specification (FCS) by univariate models 
+(variable-by-variable imputation). Only variables whose names appear in 
+\code{blocks} are imputed. The relevant columns in the \code{where} 
+matrix are set to \code{FALSE} of variables that are not block members. 
+A variable may appear in multiple blocks. In that case, it is 
+effectively re-imputed each time that it is visited.}
+
+\item{formulas}{A named list of formula's, or expressions that
+can be converted into formula's by \code{as.formula}. List elements
+correspond to blocks. The block to which the list element applies is 
+identified by its name, so list names must correspond to block names.
+The \code{formulas} argument is an alternative to the 
+\code{predictorMatrix} argument that allows for more flexibility in 
+specifying imputation models, e.g., for specifying interaction terms.}
+
+
   \item{defaultMethod}{
 A vector of three strings containing the default
 imputation methods for numerical columns, factor columns with 2 levels, and
@@ -88,20 +112,13 @@ levels) \code{polr}, proportional odds model for (ordered, >= 2 levels)
   \item{maxit}{
 A scalar giving the number of iterations. The default is 5.
 }
-  \item{diagnostics}{
-A Boolean flag. If \code{TRUE}, diagnostic information
-will be appended to the value of the function. If \code{FALSE}, only the
-imputed data are saved. The default is \code{TRUE}.
-}
+
+
   \item{seed}{An integer that is used as argument by the \code{set.seed()} for
 offsetting the random number generator. Default is to leave the random number
 generator alone.}
 
-\item{imputationMethod}{Same as \code{method} argument. Included for
-backwards compatibility.}
 
-\item{defaultImputationMethod}{Same as \code{defaultMethod} argument.
-Included for backwards compatibility.}
 
 \item{data.init}{A data frame of the same size and type as \code{data},
 without missing data, used to initialize imputations before the start of the

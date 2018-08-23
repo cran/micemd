@@ -170,7 +170,7 @@ function(y, ry, x,type,nburn=200,...){
     
   }
   
-  xx<-finddata(y,ry,x,type)$x
+  xx<-as.data.frame(finddata(y,ry,x,type)$x)
   names(xx) <- paste("V",1:ncol(x),sep="")
   clust <- "V1"
   fixe <- names(xx)[type>0]
