@@ -196,7 +196,7 @@ Vincent Audigier \email{vincent.audigier@cnam.fr}
   method<-find.defaultMethod(CHEM97Na,ind.clust)
   
   #multiple imputation by chained equations (parallel calculation) [1 minute]
-  #(the imputation process can be followed by open the files output.txt in the working directory)
+  #(the imputation process can be followed by opening output.txt files in the working directory)
   #res.mice<-mice.par(CHEM97Na,
   #                  predictorMatrix = predictor.matrix,
   #                  method=method,
