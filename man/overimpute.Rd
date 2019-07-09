@@ -34,7 +34,7 @@ alpha level for prediction intervals
 }
 }
 \details{
-This function imputes each observed values from each of the parameters of the imputation model obtained from the mice procedure. The comparison between the "overimputed" values and the observed values is made by building a confidence interval for each observed value using the quantiles of the overimputed values (Blackwell et al. (2015)). Note that confidence intervals builded with quantiles require a large number of imputations. If the model fits well the data, then the 90\% confidence interval should contain the observed value in 90\% of the cases. The function Overimpute takes as an input the output of the mice or mice.par function (res.mice), the indices of the incomplete continuous variables that are plotted (plotvars), the indices of individuals (can be useful for time consumming imputation methods), the number of nodes for parallel computation, and the path for exporting print message generated during the parallel process.
+This function imputes each observed values from each of the parameters of the imputation model obtained from the mice procedure. The comparison between the "overimputed" values and the observed values is made by building a confidence interval for each observed value using the quantiles of the overimputed values (Blackwell et al. (2015)). Note that confidence intervals builded with quantiles require a large number of imputations. If the model fits well the data, then the 90\% confidence interval should contain the observed value in 90\% of the cases. The function overimpute takes as an input the output of the mice or mice.par function (res.mice), the indices of the incomplete continuous variables that are plotted (plotvars), the indices of individuals (can be useful for time consumming imputation methods), the number of nodes for parallel computation, and the path for exporting print message generated during the parallel process.
 }
 \value{
 A list of two matrices
@@ -59,7 +59,7 @@ Vincent Audigier \email{vincent.audigier@cnam.fr}
 
 require(parallel)
 nnodes<-detectCores()-1#number of nodes
-m<-100#nb generated values per observation
+m<-1000#nb generated values per observation
 
 ################
 #one level data
@@ -77,10 +77,10 @@ data(CHEM97Na)
 ind.clust<-1#index for the cluster variable
 
 #initialisation of the argument predictorMatrix
-temp<-mice(CHEM97Na,m=1,maxit=0)
-temp$pred[ind.clust,ind.clust]<-0
-temp$pred[-ind.clust,ind.clust]<- -2
-predictor.matrix<-temp$pred
+predictor.matrix<-mice(CHEM97Na,m=1,maxit=0)$pred
+predictor.matrix[ind.clust,ind.clust]<-0
+predictor.matrix[-ind.clust,ind.clust]<- -2
+predictor.matrix[predictor.matrix==1]<-2
 
 #initialisation of the argument method
 method<-find.defaultMethod(CHEM97Na,ind.clust)

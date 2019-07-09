@@ -58,10 +58,10 @@ Van Buuren, S., Groothuis-Oudshoorn, K. (2011). mice: Multivariate Imputation by
   ind.clust<-1#index for the cluster variable
   
   #initialisation of the argument predictorMatrix
-  temp<-mice(CHEM97Na,m=1,maxit=0)
-  temp$pred[ind.clust,ind.clust]<-0;temp$pred[-ind.clust,ind.clust]<- -2
-  temp$pred[temp$pred==1]<-2
-  predictor.matrix<-temp$pred
+  predictor.matrix<-mice(CHEM97Na,m=1,maxit=0)$pred
+  predictor.matrix[ind.clust,ind.clust]<-0
+  predictor.matrix[-ind.clust,ind.clust]<- -2
+  predictor.matrix[predictor.matrix==1]<-2
   
   #initialisation of the argument method
   method<-find.defaultMethod(CHEM97Na,ind.clust)

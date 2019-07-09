@@ -28,6 +28,10 @@ function(y, ry, x,type,method_est="mm",method_draw="param",incluster=TRUE,kk=5)
     }else if(sum(is.na(coef(fit))>0)){
       fit<-NA
       warning("some sporadically missing values imputed as systematically missing")
+    }else if(fit$df.residual<=4){
+      fit<-NA
+      warning("some sporadically missing values imputed as systematically missing\n
+              because of overfitting")
     }
     return(fit)
   }
@@ -117,12 +121,14 @@ function(y, ry, x,type,method_est="mm",method_draw="param",incluster=TRUE,kk=5)
   #step2 for sigma
   #####################################
   titi2<-log(matrix(unlist(titi$sig2),nrow=length(titi$sig2),byrow=T))
-  restmp2<-try(mvmeta(titi2~1,S=lapply(titi$ddl,function(x){2/(x-4)}),method=method_est,control=list(hessian=TRUE)),silent=T)
+  S<-lapply(titi$ddl,function(x){2/(x-4)})
+  restmp2<-try(mvmeta(titi2~1,S=S,method=method_est,control=list(hessian=TRUE)),silent=T)
   
   if(!is.null(attr(restmp2,"class"))){
     if(attr(restmp2,"class")=="try-error"){
       warning("Pb with mvmeta method=reml, run with method=ml")
-      restmp2<-mvmeta(titi2~1,S=lapply(titi$ddl,function(x){2/(x-4)}),method="ml",control=list(hessian=TRUE))
+      
+      restmp2<-mvmeta(titi2~1,S=S,method="ml",control=list(hessian=TRUE))
     }
   }
   

@@ -38,10 +38,11 @@ Vincent Audigier \email{vincent.audigier@cnam.fr}
   ind.clust<-1#index for the cluster variable
   
   #initialisation of the argument predictorMatrix
-  temp<-mice(CHEM97Na,m=1,maxit=0)
-  temp$pred[ind.clust,ind.clust]<-0;temp$pred[-ind.clust,ind.clust]<- -2
-  temp$pred[temp$pred==1]<-2
-  predictor.matrix<-temp$pred
+  predictor.matrix<-mice(CHEM97Na,m=1,maxit=0)$pred
+  predictor.matrix[ind.clust,ind.clust]<-0
+  predictor.matrix[-ind.clust,ind.clust]<- -2
+  predictor.matrix[predictor.matrix==1]<-2
+
   
   #initialisation of the argument method
   method<-c("", "2l.2stage.bin", "2l.2stage.pois", "2l.2stage.norm", "") #quickest methods

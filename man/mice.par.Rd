@@ -178,7 +178,15 @@ Vincent Audigier \email{vincent.audigier@cnam.fr}
 \examples{
 
   ##############
-  #CHEM97Na (1681 observations and 5 variables)
+  # nhanes (one level data)
+  ##############
+  data(nhanes, package = "mice")
+  #imp <- mice.par(nhanes)
+  #fit <- with(data = imp, exp = lm(bmi ~ hyp + chl))
+  #summary(pool(fit))
+  
+  ##############
+  #CHEM97Na (Two levels data with 1681 observations and 5 variables)
   ##############
   
   data(CHEM97Na)
@@ -186,11 +194,10 @@ Vincent Audigier \email{vincent.audigier@cnam.fr}
   ind.clust<-1#index for the cluster variable
   
   #initialisation of the argument predictorMatrix
-  temp<-mice(CHEM97Na,m=1,maxit=0)
-  temp$pred[ind.clust,ind.clust]<-0
-  temp$pred[-ind.clust,ind.clust]<- -2
-  temp$pred[temp$pred==1]<-2
-  predictor.matrix<-temp$pred
+  predictor.matrix<-mice(CHEM97Na,m=1,maxit=0)$pred
+  predictor.matrix[ind.clust,ind.clust]<-0
+  predictor.matrix[-ind.clust,ind.clust]<- -2
+  predictor.matrix[predictor.matrix==1]<-2
   
   #initialisation of the argument method
   method<-find.defaultMethod(CHEM97Na,ind.clust)
@@ -211,7 +218,7 @@ Vincent Audigier \email{vincent.audigier@cnam.fr}
   
   
   ############
-  #IPDNa (11685 observations and 10 variables)
+  #IPDNa (Two levels data with 11685 observations and 10 variables)
   ############
   
   data(IPDNa)
@@ -219,11 +226,10 @@ Vincent Audigier \email{vincent.audigier@cnam.fr}
   ind.clust<-1#index for the cluster variable
 
   #initialisation of the argument predictorMatrix
-  temp<-mice(IPDNa,m=1,maxit=0)
-  temp$pred[ind.clust,ind.clust]<-0
-  temp$pred[-ind.clust,ind.clust]<- -2
-  temp$pred[temp$pred==1]<-2
-  predictor.matrix<-temp$pred
+  predictor.matrix<-mice(IPDNa,m=1,maxit=0)$pred
+  predictor.matrix[ind.clust,ind.clust]<-0
+  predictor.matrix[-ind.clust,ind.clust]<- -2
+  predictor.matrix[predictor.matrix==1]<-2
 
   #initialisation of the argument method
   method<-find.defaultMethod(IPDNa,ind.clust)

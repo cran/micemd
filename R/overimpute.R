@@ -27,26 +27,23 @@ function (res.mice, plotvars = NULL,plotinds=NULL,nnodes=5,path.outfile =NULL,al
   }
   
   #no plot for categorical variables
-  is.plot<-sapply(res.mice$data[,Var],is.numeric)
+  is.plot<-sapply(res.mice$data[,Var,drop=FALSE],is.numeric)
   #no plot for binary variable
-  is.plot[apply(res.mice$data[,Var],2,function(xx){length(table(xx))==2})]<-FALSE
+  is.plot[apply(res.mice$data[,Var,drop=FALSE],2,function(xx){length(table(xx))==2})]<-FALSE
   #no plot for cluster index
   is.plot[ind.clust]<-FALSE
   #no plot for variables without any missing values
-  is.plot[colSums(is.na(res.mice$data[,Var]))==0]<-FALSE
-  
-  don.plot<-as.matrix(res.mice$data[Ind,is.plot])
+  is.plot[colSums(is.na(res.mice$data[,Var,drop=FALSE]))==0]<-FALSE
+  don.plot<-as.matrix(res.mice$data[Ind,Var[is.plot],drop=FALSE])
   res.over<-matrix(NA, nrow=sum(!is.na(don.plot)),ncol=res.mice$m)
-  
-   cl <- makeCluster(nnodes,type = "PSOCK")
-   clusterExport(cl, list("is.plot","res.mice","path.outfile","Ind"), envir = environment())
-   if (!is.null(path.outfile)) {
+  cl <- makeCluster(nnodes,type = "PSOCK")
+  clusterExport(cl, list("is.plot","res.mice","path.outfile","Ind"), envir = environment())
+  if (!is.null(path.outfile)) {
      clusterEvalQ(cl, sink(paste0(path.outfile, "/output", 
                                   Sys.getpid(), ".txt")))
-   }
+  }
   clusterEvalQ(cl, library(mice))
   clusterEvalQ(cl, library(micemd))
-  
   res.over<-t(parSapply(cl,which(!is.na(don.plot)),FUN=function(jj,is.plot,res.mice,Ind){
     cat("cell number : ",jj,"\n")
     sapply(seq(res.mice$m),FUN=function(m,ii,is.plot,res.mice,Ind){
@@ -64,13 +61,13 @@ function (res.mice, plotvars = NULL,plotinds=NULL,nnodes=5,path.outfile =NULL,al
     },ii=jj,is.plot=is.plot,res.mice=res.mice,Ind=Ind)},is.plot=is.plot,res.mice=res.mice,Ind=Ind))
   stopCluster(cl)
   
-  res.plot <- t(apply(res.over, 1, function(x) {
+  res.plot <- t(apply(res.over, 1, function(x,alpha) {
     xbar <- mean(x)
     temp <- quantile(x, probs = c(alpha/2, 1-alpha/2),na.rm=TRUE)
     binf <- temp[[1]]
     bsup <- temp[[2]]
     return(c(xbar = xbar, binf = binf, bsup = bsup))
-  }))
+  },alpha=alpha))
   
   pct <- rep(rowMeans(is.na(res.mice$data[Ind,])),ncol(don.plot))
   col <- cut(pct, c(-0.1, 0.2, 0.4, 0.6, 0.8, 1.1))
@@ -80,7 +77,7 @@ function (res.mice, plotvars = NULL,plotinds=NULL,nnodes=5,path.outfile =NULL,al
   res.over.value<-res.over
   res.over<-cbind.data.frame(var=unlist(mapply(FUN = rep,names(is.plot[is.plot]),each=apply(!is.na(don.plot),2,sum))),
                               trueval=don.plot[!is.na(don.plot)],res.plot,pct=pct[!is.na(don.plot)],col=col[!is.na(don.plot)])
-  
+  colnames(res.over)[1]<-"var"#required with only 1 variable
   par(mfrow = c(ceiling(sqrt(length(is.plot[is.plot]))), ceiling(length(is.plot[is.plot])/ceiling(sqrt(length(is.plot[is.plot]))))), 
       mar = c(5, 4, 4, 2) - 1.9)
   by(res.over,INDICES =  res.over$var,FUN=function(xx){
