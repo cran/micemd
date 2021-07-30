@@ -1,5 +1,4 @@
-overimpute <-
-function (res.mice, plotvars = NULL,plotinds=NULL,nnodes=5,path.outfile =NULL,alpha=0.1) 
+overimpute<-function (res.mice, plotvars = NULL,plotinds=NULL,nnodes=5,path.outfile =NULL,alpha=0.1) 
 {
   if (res.mice$m < 100) {
     warning("The number of imputed data sets is too low to build confidence intervals according to the quantiles method. You should run mice with m over than 100.")
@@ -83,8 +82,8 @@ function (res.mice, plotvars = NULL,plotinds=NULL,nnodes=5,path.outfile =NULL,al
   by(res.over,INDICES =  res.over$var,FUN=function(xx){
     plot(x = xx[,"trueval"], y = xx[, "xbar"], col = as.character(xx[,"col"]), 
          xlab = "observed values", ylab = "imputed values", 
-         main = xx[1,"var"], ylim = c(min(xx[, 
-                                             "binf"], na.rm = T), max(xx[, "bsup"], na.rm = T)))
+         main = paste(xx[1,"var"],paste0("(cover = ", as.character(round(mean((xx$trueval>=xx$binf)&(xx$trueval<=xx$bsup))*100,2)),"%)")),
+         ylim = c(min(xx[,"binf"], na.rm = T), max(xx[, "bsup"], na.rm = T)))
     abline(0, 1)
     segments(x0 = xx[,"trueval"], x1 = xx[,"trueval"], 
              y0 = xx[, "binf"], y1 = xx[, "bsup"], col =  as.character(xx[,"col"]))
@@ -92,6 +91,7 @@ function (res.mice, plotvars = NULL,plotinds=NULL,nnodes=5,path.outfile =NULL,al
                                  "0.6-0.8", "0.8-1"), col = c("blue", "green", heat.colors(3)[c(3, 
                                                                                                 2, 1)]), bty = "n", lty = 1, horiz = F, cex = 0.7, 
            lwd = 0.4)
+
   }
   )
   return(list(res.plot=res.over,res.values=res.over.value))

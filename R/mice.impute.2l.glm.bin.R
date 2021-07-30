@@ -1,5 +1,4 @@
-mice.impute.2l.glm.bin <-
-function(y, ry, x,type,...){
+mice.impute.2l.glm.bin <- function(y, ry, x,type,...){
   Diag<-function(xx=1){
     res<-diag(xx)
     if(class(xx)=="numeric"){
@@ -38,7 +37,7 @@ function(y, ry, x,type,...){
                                     data = data.frame(yobs,xobs), 
                                     family = binomial),silent=F))
   if(!is.null(attr(fit,"class"))){
-    if(attr(fit,"class")=="try-error"){
+    if("try-error"%in%attr(fit,"class")){
       warning("glmer cannot be run, sorry!")
       return(y[!ry])
     }

@@ -1,4 +1,4 @@
-a5d2b031c9fdf0c5ae141fba987aebe1 *DESCRIPTION
+b2fc960e03306cea5f6299e1b8e746c2 *DESCRIPTION
 2d927492f75304ab0cf397df13b82d01 *NAMESPACE
 bfdf847f49266ebf3c8d2fa4ed89c504 *R/find.defaultMethod.R
 d66f61410ee03089b42ee0c3963c15d1 *R/mice.impute.2l.2stage.bin.R
@@ -8,12 +8,12 @@ f792a899381109eecf1912dff1f42017 *R/mice.impute.2l.2stage.norm.intern.R
 9df2ef69bf56e8f12c67cfa0499bb9d6 *R/mice.impute.2l.2stage.pmm.R
 d892d363d720246f6cd8a3510b7d1fd5 *R/mice.impute.2l.2stage.pois.R
 9e3c5713b37eb366d2a8037f99007c4e *R/mice.impute.2l.2stage.pois.intern.R
-77301351eab8bcc44104e1091f126da4 *R/mice.impute.2l.glm.bin.R
-5d5da793c55b9237c4dea12d017f9292 *R/mice.impute.2l.glm.norm.R
-d045e9469600f265b9ad81b2309e6ea4 *R/mice.impute.2l.glm.pois.R
+4f31e389021acf441fd1565e1211008f *R/mice.impute.2l.glm.bin.R
+6609afe6fe1dff52d18acfd5f84a5ee0 *R/mice.impute.2l.glm.norm.R
+50bb05e6a69b69f2d6cd7220d8448a9f *R/mice.impute.2l.glm.pois.R
 dd9180fd8752987c7fe291c0925f2893 *R/mice.impute.2l.jomo.R
 173e30d282272621af656de1451afbc6 *R/mice.par.R
-38e7b655f4ef504f9904ce275804ac4e *R/overimpute.R
+6a9eeb49449d78df5cc1256657a9ed13 *R/overimpute.R
 33c8b68685fe8dbaa3318499330d948b *R/plot.mira.R
 b828c50f1f34b8d6b32a7c22c1444be1 *data/CHEM97Na.rda
 58509c275fdf7e148b33871852e40542 *data/IPDNa.rda
@@ -28,7 +28,7 @@ a414fa8c120d7fba903bcf6d0f0d5893 *man/mice.impute.2l.glm.bin.Rd
 2ca1fdee73db24ad4c9aea65dde9f91d *man/mice.impute.2l.glm.norm.Rd
 52015bae05d3b8bd61c254acc96767fd *man/mice.impute.2l.glm.pois.Rd
 36fb55d9c5d96e80cfb06e6e0074d1ca *man/mice.impute.2l.jomo.Rd
-05279f71f72dbfb870c54b91ec952c24 *man/mice.par.Rd
+3dc51df5b5abafba97fcb1f0c866df03 *man/mice.par.Rd
 81153e74bde1caad01135ac739f03a13 *man/micemd-package.Rd
-db58233046bf74197738e1104effe6b9 *man/overimpute.Rd
+0e0b7d4fdd9bf0b3d18a1bc1489585f0 *man/overimpute.Rd
 ef08f9703519dfe19b50c2e5cb2871a3 *man/plot.mira.Rd

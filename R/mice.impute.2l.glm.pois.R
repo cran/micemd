@@ -1,5 +1,4 @@
-mice.impute.2l.glm.pois <-
-function(y, ry, x,type,...){
+mice.impute.2l.glm.pois <- function(y, ry, x,type,...){
   Diag<-function(xx=1){
     res<-diag(xx)
     if(class(xx)=="numeric"){
@@ -38,7 +37,7 @@ function(y, ry, x,type,...){
                                     data = data.frame(yobs,xobs), 
                                     family = poisson),silent=F))
   if(!is.null(attr(fit,"class"))){
-    if(attr(fit,"class")=="try-error"){
+    if("try-error"%in%attr(fit,"class")){
       warning("glmer cannot be run, sorry!")
       return(y[!ry])
     }
@@ -93,7 +92,7 @@ function(y, ry, x,type,...){
   for (i in lev[misindicator[,2]]){
     suppressWarnings(bi.star <- t(rmvnorm(1,mean = rep(0,nrow(psi.star)), sigma = psi.star, method="chol"))) # draw bi
     tmp <- as.matrix(X[!ry & x[,clust]==i,]) %*% beta.star + as.matrix(Z[!ry & x[,clust]==i,])%*% bi.star
-    temp<-exp(temp)
+    temp<-exp(tmp)
     imp<-sapply(temp,rpois,n=1)
     y[!ry & x[,clust]==i]<-imp
   }

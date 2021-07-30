@@ -146,7 +146,7 @@ Returns an S3 object of class \code{\link[=mids-class]{mids}} (multiply imputed 
 Van Buuren, S., Groothuis-Oudshoorn, K. (2011). \code{mice}:
 Multivariate Imputation by Chained Equations in \code{R}. \emph{Journal of
 Statistical Software}, \bold{45}(3), 1-67.
-\url{http://www.jstatsoft.org/v45/i03/} <doi:10.18637/jss.v045.i03>
+\url{https://www.jstatsoft.org/v45/i03/} <doi:10.18637/jss.v045.i03>
 
 van Buuren, S. (2012). \emph{Flexible Imputation of Missing Data.} Boca
 Raton, FL: Chapman & Hall/CRC Press.

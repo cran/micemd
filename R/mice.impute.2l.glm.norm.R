@@ -1,5 +1,5 @@
 mice.impute.2l.glm.norm <-
-function(y, ry, x,type,...){
+  function(y, ry, x,type,...){
     Diag<-function(xx=1){
       res<-diag(xx)
       if(class(xx)=="numeric"){
@@ -40,7 +40,7 @@ function(y, ry, x,type,...){
     suppressWarnings(fit <- try(lmer(formula(randmodel), 
                                      data = data.frame(yobs,xobs)),silent=F))
     if(!is.null(attr(fit,"class"))){
-      if(attr(fit,"class")=="try-error"){
+      if("try-error"%in%attr(fit,"class")){
         warning("lmer cannot be run, sorry!")
         return(y[!ry])
       }
