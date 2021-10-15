@@ -117,7 +117,7 @@ mice.impute.2l.glm.norm <-
         esp_bi<-temp%*%(y[ry & x[,clust]==i]-as.matrix(X[ry & x[,clust]==i,])%*%beta.star)
         var_bi<-psi.star-temp%*%as.matrix(Z[ry & x[,clust]==i,])%*%psi.star
         try(bi.star <- t(rmvnorm(1,mean = esp_bi, sigma = var_bi, method="svd")))#svd prefered to chol to avoid Nan
-        if(class(bi.star)=="try-error"){
+        if("try-error"%in%class(bi.star)){
           bi.star<-esp_bi
           warning("The cov matrix for the cluster is not full rank")
         }

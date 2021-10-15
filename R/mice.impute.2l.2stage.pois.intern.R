@@ -1,5 +1,4 @@
-mice.impute.2l.2stage.pois.intern <-
-function(y, ry, x,type,method_est="mm")
+mice.impute.2l.2stage.pois.intern <- function(y, ry, x,type,method_est="mm")
 {
   threshold<-1000
   if((class(y)=="factor")){
@@ -105,7 +104,7 @@ function(y, ry, x,type,method_est="mm")
   {
     warning("Pb with mvmeta method=reml in 2l.me22.bin, run with method=ml")
     restmp<-try(mvmeta(titi2~1,S=titi$varest,control=list(hessian=TRUE),method="ml"))
-    if(class(restmp)=="try-error"){
+    if("try-error"%in%class(restmp)){
       warning("2nd stage cannot be performed, missing values are not imputed")
       return(y[!ry])
     }
@@ -114,7 +113,7 @@ function(y, ry, x,type,method_est="mm")
   #draw of beta
  
   betaest<-try(rmvnorm(1,mean=coef(restmp),sigma=vcov(restmp),method="svd"))
-  if(class(betaest)=="try-error"){betaest<-coef(restmp)}
+  if("try-error"%in%class(betaest)){betaest<-coef(restmp)}
   
   #draw of psi
   varest<-draw_psi(res.mvmeta = restmp,method_est=method_est)
