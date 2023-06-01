@@ -39,7 +39,7 @@ PROG-IMT Study Group (2013). Multiple imputation for handling systematically mis
 confounders in meta-analysis of individual participant data. Statistics in Medicine,
 32(28):4890{4905}. <doi:10.1002/sim.5894>
 
-Schafer, J. L. (1997) Analysis of Incomplete Multivariate Data. Chapman \& Hall, Chapter 9.
+Schafer, J. L. (1997) Analysis of Incomplete Multivariate Data. Chapman & Hall, Chapter 9.
 }
 \examples{
 data(IPDNa)

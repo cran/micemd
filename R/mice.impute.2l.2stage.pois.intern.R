@@ -1,7 +1,7 @@
 mice.impute.2l.2stage.pois.intern <- function(y, ry, x,type,method_est="mm")
 {
   threshold<-1000
-  if((class(y)=="factor")){
+  if(inherits(y,"factor")){
     stop("y is a factor, you have to use method 2l.2stage.bin or to convert y as a continuous variable")
   }
   
@@ -11,7 +11,7 @@ mice.impute.2l.2stage.pois.intern <- function(y, ry, x,type,method_est="mm")
       fit<-NA
     }else{
       fit<-try(glm(formula(paste("y~",paste(fixe[-1],collapse="+"))),data=dta,family="poisson"),silent = TRUE)
-      if(class(fit)[1]=="try-error") {
+      if(inherits(fit,"try-error")) {
         fit<-NA
       }else if((sum(is.na(coef(fit))>0))|any(summary(fit)$coef[,"Std. Error"]>threshold)){
         fit<-NA

@@ -1,7 +1,7 @@
 mice.impute.2l.2stage.bin.intern <- function(y, ry, x,type,method_est="mm")
 {
   threshold<-1000
-  if((class(y)!="factor")){
+  if(!(inherits(y,"factor"))){
     stop("y is not binary, you can use 2l.2stage.norm.reml or convert y as a binary variable")
   }else if( (nlevels(y)!=2)){
     stop("y is not binary, you can use 2l.2stage.norm.reml or convert y as a binary variable")
@@ -13,7 +13,7 @@ mice.impute.2l.2stage.bin.intern <- function(y, ry, x,type,method_est="mm")
       fit<-NA
     }else{
       fit<-try(glm(formula(paste("y~",paste(fixe[-1],collapse="+"))),data=dta,family="binomial"),silent = TRUE)
-      if(class(fit)[1]=="try-error") {
+      if(inherits(fit,"try-error")){
         fit<-NA
       }else if((sum(is.na(coef(fit))>0))|any(summary(fit)$coef[,"Std. Error"]>threshold)){
         fit<-NA

@@ -51,7 +51,7 @@ overimpute<-function (res.mice, plotvars = NULL,plotinds=NULL,nnodes=5,path.outf
       tmp[ii]<-NA
       don.over[Ind,names(which(is.plot))]<-tmp
       res.mice.tmp<-try(mice(don.over,m=1,maxit=1,printFlag = FALSE,method = res.mice$method, predictorMatrix = res.mice$predictorMatrix))
-      if(class(res.mice.tmp)=="try-error"){
+      if(inherits(res.mice.tmp,"try-error")){
         res<-NA
         }else{
       res<-unlist(res.mice.tmp$imp)

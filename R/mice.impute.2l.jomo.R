@@ -181,7 +181,7 @@ function(y, ry, x,type,nburn=200,...){
                                 nburn=nburn,
                                 nbetween=1, nimp=2, output=0, out.iter=nburn,meth="random"))
   
-  if(class(res.jomo)!="try-error"){
+  if(!inherits(res.jomo,"try-error")){
     ind.y<-apply(res.jomo,2,FUN=function(xx){sum(is.na(xx))>0})
     res.out<-res.jomo[which(res.jomo[,"Imputation"]==1),ind.y][!ry]
     return(res.out)

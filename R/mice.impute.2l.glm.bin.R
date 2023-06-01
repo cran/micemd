@@ -1,7 +1,7 @@
 mice.impute.2l.glm.bin <- function(y, ry, x,type,...){
   Diag<-function(xx=1){
     res<-diag(xx)
-    if(class(xx)=="numeric"){
+    if(inherits(xx,"numeric")){
       if((length(xx)==1)&(xx[1]<=1)){res<-as.matrix(xx)}
     }else if(setequal(dim(xx),c(1,1))){
       res<-xx 
