@@ -5,7 +5,7 @@ copulaIPD <- function(data, sel, out, family, send) {
   fit <- try(GJRM::gjrm( formula = list(sel, out),
                          data = data,
                          margins = c("probit", ifelse(family=="binomial","probit","N")),
-                         Model = "BSS",
+                         model = "BSS",
                          gamlssfit = TRUE,
                          extra.regI = "sED",
                          parscale = TRUE),
@@ -18,8 +18,8 @@ copulaIPD <- function(data, sel, out, family, send) {
     convg <- max(abs(fit$fit$gradient)) < 10 # convergence based on abs max gradient
     
     #MAR indication 
-    CIcon<-summary(fit)$ CItheta 
-    MNAR_ind<-!(CIcon[[1]]>-0.001&CIcon[[2]]<0.001) # exclusion of cases that blow up variance
+    CIcon <- summary(fit)$ CItheta 
+    MNAR_ind <- !(CIcon[[1]]>-0.001&CIcon[[2]]<0.001) # exclusion of cases that blow up variance
     
     if (MNAR_ind){
       fit_ind <- 2
@@ -30,13 +30,14 @@ copulaIPD <- function(data, sel, out, family, send) {
     }
   }
   
-  if( fit_ind ==2){
+  if( fit_ind == 2){
     fit <- NULL
     gam1 <- try(mgcv::gam(formula=sel,data = data,family = "binomial", method ="REML"))
     gam2 <- try(mgcv::gam(formula=out,data = data,family = family, method ="REML"))
     fit_ind <- 0
     if(!any(inherits(gam1, "try-error"))&!any(inherits(gam2, "try-error"))){
-      vp<-c(diag(gam1$Vp),diag(gam2$Vp))
+     coefficients <- c(gam1$coefficients,gam2$coefficients)
+      vp <- c(diag(gam1$Vp),diag(gam2$Vp))
       if(all(c(!is.na(coefficients),vp!=0))){
         s     <- ifelse(family != "binomial",1,0) 
         ncol1 <- ncol(gam1$Vp)

@@ -59,22 +59,13 @@ For instance, with few observed clusters (i.e. less than \code{I.small}), and ma
 A vector of strings with length \code{ncol(data)}.
 }
 \references{
-Audigier, V., White, I. ,  Jolani ,S.  Debray, T.,  Quartagno, M., Carpenter, J., van Buuren, S. and Resche-Rigon, M.
-Multiple imputation for multilevel data with continuous and binary variables (2018). Statistical Science. <doi:10.1214/18-STS646>.
+Audigier, V., White, I. ,  Jolani ,S.  Debray, T.,  Quartagno, M., Carpenter, J., van Buuren, S. and Resche-Rigon, M. Multiple imputation for multilevel data with continuous and binary variables (2018). Statistical Science. \doi{10.1214/18-STS646}.
 
+Jolani, S., Debray, T. P. A., Koffijberg, H., van Buuren, S., and Moons, K. G. M. (2015). Imputation of systematically missing predictors in an individual participant data meta-analysis: a generalized approach using MICE. Statistics in Medicine, 34(11):1841-1863). \doi{10.1002/sim.6451}
 
-Jolani, S., Debray, T. P. A., Koffijberg, H., van Buuren, S., and Moons, K. G. M. (2015). Imputation
-of systematically missing predictors in an individual participant data meta-analysis: a
-generalized approach using MICE. Statistics in Medicine, 34(11):1841{1863}. <doi:10.1002/sim.6451>
+Quartagno, M. and Carpenter, J. R. (2016). Multiple imputation for IPD meta-analysis: allowing for heterogeneity and studies with missing covariates. Statistics in Medicine, 35(17):2938-2954. \doi{10.1002/sim.6837}
 
-
-Quartagno, M. and Carpenter, J. R. (2016). Multiple imputation for IPD meta-analysis: allowing
-for heterogeneity and studies with missing covariates. Statistics in Medicine, 35(17):2938{
-2954}. <doi:10.1002/sim.6837>
-
-Resche-Rigon, M. and White, I. R. (2016). Multiple imputation by chained equations for systematically
-and sporadically missing multilevel data. Statistical Methods in Medical Research.
-To appear. <doi:10.1177/0962280216666564>
+Resche-Rigon, M. and White, I. R. (2018). Multiple imputation by chained equations for systematically and sporadically missing multilevel data. Statistical Methods in Medical Research, 27(6):1634-1649. \doi{10.1177/0962280216666564}
 }
 \author{
 Vincent Audigier \email{vincent.audigier@cnam.fr}
@@ -92,20 +83,20 @@ Vincent Audigier \email{vincent.audigier@cnam.fr}
 
   data(CHEM97Na)
   
-  ind.clust<-1#index for the cluster variable
+  ind.clust <- 1#index for the cluster variable
   
   #initialisation of the argument predictorMatrix
-  predictor.matrix<-mice(CHEM97Na,m=1,maxit=0)$pred
-  predictor.matrix[ind.clust,ind.clust]<-0
-  predictor.matrix[-ind.clust,ind.clust]<- -2
-  predictor.matrix[predictor.matrix==1]<-2
+  predictor.matrix <- mice(CHEM97Na, m = 1, maxit = 0)$pred
+  predictor.matrix[ind.clust,ind.clust] <- 0
+  predictor.matrix[-ind.clust,ind.clust] <- -2
+  predictor.matrix[predictor.matrix==1] <- 2
   
   #initialisation of the argument method
-  method<-find.defaultMethod(CHEM97Na,ind.clust)
+  method <- find.defaultMethod(CHEM97Na, ind.clust)
   print(method)
   
   #multiple imputation by chained equations (parallel calculation)
-  #res.mice<-mice.par(CHEM97Na, m = 3, predictorMatrix = predictor.matrix, method = method)
+  #res.mice <- mice.par(CHEM97Na, m = 3, predictorMatrix = predictor.matrix, method = method)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

@@ -1,16 +1,19 @@
-mice.impute.2l.2stage.heckman<-
-function(y,ry,x,wy=NULL,type,pmm=FALSE,ypmm=NULL,meta_method="reml",...){
+mice.impute.2l.2stage.heckman <- function(y, ry, x, wy=NULL, type, pmm=FALSE, ypmm=NULL, meta_method="reml", pred_std=FALSE,...){
   
+   if (pred_std == TRUE){
+     x <- apply(x, MARGIN = 2, FUN = function(X) (if(length(unique(X))<=2&sum(unique(X))==1){X} else{scale(X)}))
+  }
+
   # 1. Define variables and dataset----
   
   # Rename covariates
   colnames(x) <- paste0("x_", 1:length(colnames(x))) #change the covariates name for avoiding conflicts when y is covariate
-  bos_name <- colnames(x)[type ==  1] # names of variables present in both outcome and selection model
+  bos_name <- colnames(x)[type ==  2] # names of variables present in both outcome and selection model
   sel_name <- colnames(x)[type == -3] # names of variables in selection model alone
   out_name <- colnames(x)[type == -4] # names of variables in outcome model alone
   
   # # Define y type
-  if (inherits(y,"factor") & nlevels(y) == 2){
+  if ((inherits(y, "factor")) & nlevels(y) == 2){
     family <- "binomial"
   }else{
     family <- "gaussian"

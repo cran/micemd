@@ -31,13 +31,9 @@ GREAT Network (2013).  Managing acute heart failure in the ed - case studies
 from the acute heart failure academy.  http://www.greatnetwork.org
 }
 \references{
-Audigier, V., White, I. ,  Jolani ,S.  Debray, T.,  Quartagno, M., Carpenter, J., van Buuren, S. and Resche-Rigon, M.
-Multiple imputation for multilevel data with continuous and binary variables (2018). Statistical Science. <doi:10.1214/18-STS646>.
+Audigier, V., White, I. ,  Jolani ,S.  Debray, T.,  Quartagno, M., Carpenter, J., van Buuren, S. and Resche-Rigon, M. Multiple imputation for multilevel data with continuous and binary variables (2018). Statistical Science. \doi{10.1214/18-STS646}.
 
-Resche-Rigon, M., White, I. R., Bartlett, J., Peters, S., Thompson, S., and on behalf of the
-PROG-IMT Study Group (2013). Multiple imputation for handling systematically missing
-confounders in meta-analysis of individual participant data. Statistics in Medicine,
-32(28):4890{4905}. <doi:10.1002/sim.5894>
+Resche-Rigon, M., White, I. R., Bartlett, J., Peters, S., Thompson, S., and on behalf of the PROG-IMT Study Group (2013). Multiple imputation for handling systematically missing confounders in meta-analysis of individual participant data. Statistics in Medicine, 32(28):4890-4905. \doi{10.1002/sim.5894}
 
 Schafer, J. L. (1997) Analysis of Incomplete Multivariate Data. Chapman & Hall, Chapter 9.
 }
@@ -48,6 +44,6 @@ data(IPDNa)
 summary(IPDNa)
 
 #summary per study
-by(IPDNa,IPDNa$centre,summary)
+by(IPDNa, IPDNa$centre, summary)
 }
 \keyword{datasets}

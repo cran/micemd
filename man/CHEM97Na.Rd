@@ -28,12 +28,9 @@ Available at http://www.bristol.ac.uk/cmm/learning/mmsoftware/data-rev.html#chem
 }
 
 \references{
-Fielding, A., Yang, M., and Goldstein, H. (2003). Multilevel ordinal models for examination grades. Statistical Modelling, 3 (2): 127-153. <doi:10.1191/1471082X03st052oa>
+Fielding, A., Yang, M., and Goldstein, H. (2003). Multilevel ordinal models for examination grades. Statistical Modelling, 3 (2): 127-153. \doi{10.1191/1471082X03st052oa}
 
-Resche-Rigon, M., White, I. R., Bartlett, J., Peters, S., Thompson, S., and on behalf of the
-PROG-IMT Study Group (2013). Multiple imputation for handling systematically missing
-confounders in meta-analysis of individual participant data. Statistics in Medicine,
-32(28):4890{4905}. <doi:10.1002/sim.5894>
+Resche-Rigon, M., White, I. R., Bartlett, J., Peters, S., Thompson, S., and on behalf of the PROG-IMT Study Group (2013). Multiple imputation for handling systematically missing confounders in meta-analysis of individual participant data. Statistics in Medicine, 32(28):4890-4905. \doi{10.1002/sim.5894}
 
 Little R.J.A., Rubin D.B. (2002) Statistical Analysis with Missing Data. Wiley series in probability and statistics, New-York
 }

@@ -14,10 +14,16 @@ function(don.na, m = 5, method = NULL, predictorMatrix= (1 - diag(1, ncol(don.na
   if("method_est"%in%names(tmp)){method_est<-tmp[["method_est"]]}else{method_est<-"mm"}
   if("incluster"%in%names(tmp)){incluster<-tmp[["incluster"]]}else{incluster<-FALSE}
   if("nburn"%in%names(tmp)){nburn<-tmp[["nburn"]]}else{nburn<-200}
+  if("ypmm"%in%names(tmp)){ypmm<-tmp[["ypmm"]]}else{ypmm<-NULL}
+  if("pmm"%in%names(tmp)){pmm<-tmp[["pmm"]]}else{pmm<-FALSE}
+  if("pred_std"%in%names(tmp)){pred_std<-tmp[["pred_std"]]}else{pred_std<-FALSE}
+  if("meta_method"%in%names(tmp)){meta_method<-tmp[["meta_method"]]}else{meta_method <- "reml"}
+  
+  
   if(maxit==0){stop("The argument maxit=0 is not relevant for parallel calculation, use the mice function from the mice package")}
   
   
-  clusterExport(cl, list("mice","mice.impute.2l.glm.bin",
+  clusterExport(cl, list("mice","mice.impute.2l.glm.bin","mice.impute.2l.2stage.heckman",
                          "mice.impute.2l.glm.norm",
                          "mice.impute.2l.2stage.bin",
                          "mice.impute.2l.2stage.bin.intern",
@@ -52,7 +58,7 @@ function(don.na, m = 5, method = NULL, predictorMatrix= (1 - diag(1, ncol(don.na
                          "kpmm",
                          "method_est",
                          "incluster",
-                         "nburn","path.outfile"),envir = environment())  
+                         "nburn","path.outfile","ypmm","pmm","pred_std","meta_method"),envir = environment())  
   
   if(!missing(blocks)){clusterExport(cl, list("blocks"),envir = environment())}
   if(!missing(formulas)){clusterExport(cl, list("formulas"),envir = environment())} 
@@ -65,12 +71,12 @@ function(don.na, m = 5, method = NULL, predictorMatrix= (1 - diag(1, ncol(don.na
   if(!missing(blocks)&!missing(formulas)){
     res<-parSapply(cl,as.list(1:m), FUN=function(mtmp,don.na,method,predictorMatrix,visitSequence,where,blocks,formulas,blots,
                                                  post,defaultMethod,data.init,
-                                                 maxit,nnodes,kpmm,method_est,incluster,nburn){
+                                                 maxit,nnodes,kpmm,method_est,incluster,nburn,ypmm,pmm,pred_std,meta_method){
       
       res.mice<-mice(data=don.na,m=1,method = method,predictorMatrix=predictorMatrix,
                      visitSequence=visitSequence,where=where,blocks=blocks,formulas=formulas,blots=blots,post=post,
                      defaultMethod=defaultMethod,data.init=data.init,
-                     maxit = maxit,printFlag=TRUE,seed=NA,method_est=method_est,incluster=incluster,nburn=nburn,kpmm=kpmm)
+                     maxit = maxit,printFlag=TRUE,seed=NA,method_est=method_est,incluster=incluster,nburn=nburn,kpmm=kpmm,ypmm=ypmm,pmm=pmm,pred_std=pred_std,meta_method=meta_method)
     },don.na=don.na,
     method=method,
     predictorMatrix=predictorMatrix,
@@ -86,18 +92,22 @@ function(don.na, m = 5, method = NULL, predictorMatrix= (1 - diag(1, ncol(don.na
     nnodes=nnodes,
     method_est=method_est,
     kpmm=kpmm,
+    ypmm=ypmm,
+    pmm=pmm,
+    pred_std=pred_std,
+    meta_method=meta_method,
     incluster=incluster,
     nburn=nburn,
     simplify = FALSE)
   }else if(missing(blocks)&missing(formulas)){
     res<-parSapply(cl,as.list(1:m), FUN=function(mtmp,don.na,method,predictorMatrix,visitSequence,where,blots,
                                                  post,defaultMethod,data.init,
-                                                 maxit,nnodes,kpmm,method_est,incluster,nburn){
+                                                 maxit,nnodes,kpmm,method_est,incluster,nburn,ypmm,pmm,pred_std,meta_method){
       
       res.mice<-mice(data=don.na,m=1,method = method,predictorMatrix=predictorMatrix,
                      visitSequence=visitSequence,where=where,blots=blots,post=post,
                      defaultMethod=defaultMethod,data.init=data.init,
-                     maxit = maxit,printFlag=TRUE,seed=NA,method_est=method_est,incluster=incluster,nburn=nburn,kpmm=kpmm)
+                     maxit = maxit,printFlag=TRUE,seed=NA,method_est=method_est,incluster=incluster,nburn=nburn,kpmm=kpmm,ypmm=ypmm,pmm=pmm,pred_std=pred_std,meta_method=meta_method)
     },don.na=don.na,
     method=method,
     predictorMatrix=predictorMatrix,
@@ -111,6 +121,10 @@ function(don.na, m = 5, method = NULL, predictorMatrix= (1 - diag(1, ncol(don.na
     nnodes=nnodes,
     method_est=method_est,
     kpmm=kpmm,
+    ypmm=ypmm,
+    pmm=pmm,
+    pred_std=pred_std,
+    meta_method=meta_method,
     incluster=incluster,
     nburn=nburn,
     simplify = FALSE)

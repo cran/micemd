@@ -37,9 +37,7 @@ A vector of length \code{nmis} with imputations.
 }
 
 \references{
-Jolani, S., Debray, T. P. A., Koffijberg, H., van Buuren, S., and Moons, K. G. M. (2015). Imputation
-of systematically missing predictors in an individual participant data meta-analysis: a
-generalized approach using MICE. Statistics in Medicine, 34(11):1841{1863}. <doi:10.1002/sim.6451>
+Jolani, S., Debray, T. P. A., Koffijberg, H., van Buuren, S., and Moons, K. G. M. (2015). Imputation of systematically missing predictors in an individual participant data meta-analysis: a generalized approach using MICE. Statistics in Medicine, 34(11):1841-1863. \doi{10.1002/sim.6451}
 }
 \author{
 Vincent Audigier \email{vincent.audigier@cnam.fr} from the R code of Shahab Jolani.
