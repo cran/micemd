@@ -57,7 +57,7 @@ Vincent Audigier \email{vincent.audigier@cnam.fr}
 
 
 \seealso{
-\code{\link{mice},\link{mice.impute.2l.2stage.pmm},\link{mice.impute.2l.glm.norm},\link{mice.impute.2l.jomo}}
+\code{\link[mice]{mice}} \code{\link{mice.impute.2l.2stage.pmm}} \code{\link{mice.impute.2l.glm.norm}} \code{\link{mice.impute.2l.jomo}}
 }
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the

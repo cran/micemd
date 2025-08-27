@@ -77,7 +77,7 @@ Vincent Audigier \email{vincent.audigier@cnam.fr}
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{mice}}, \code{\link{mice.par}}
+\code{\link[mice]{mice}} \code{\link{mice.par}}
 }
 \examples{
 

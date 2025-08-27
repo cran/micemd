@@ -43,7 +43,7 @@ Jolani, S., Debray, T. P. A., Koffijberg, H., van Buuren, S., and Moons, K. G. M
 Vincent Audigier \email{vincent.audigier@cnam.fr} from the R code of Shahab Jolani.
 }
 \seealso{
-\code{\link{mice},\link{mice.impute.2l.2stage.pois}}
+\code{\link[mice]{mice}} \code{\link{mice.impute.2l.2stage.pois}}
 }
 
 \keyword{mice}

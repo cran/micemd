@@ -49,7 +49,7 @@ Yucel R.M., (2011), Random-covariances and mixed-effects models for imputing mul
 }
 
 \seealso{
-\code{\link{mice},\link{jomo1ran}}
+\code{\link[mice]{mice}} \code{\link[jomo]{jomo1ran}}
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

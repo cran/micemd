@@ -37,7 +37,7 @@ Van Buuren, S., Groothuis-Oudshoorn, K. (2011). mice: Multivariate Imputation by
 \keyword{imputation}
 \keyword{meta-analyse}
 \seealso{
-\code{\link{mice}}
+\code{\link[mice]{mice}}
 }
 \examples{
   require(lme4)

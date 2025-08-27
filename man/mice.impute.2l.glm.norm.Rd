@@ -46,7 +46,7 @@ Audigier, V., White, I. ,  Jolani ,S.  Debray, T.,  Quartagno, M., Carpenter, J.
 Vincent Audigier \email{vincent.audigier@cnam.fr} from the R code of Shahab Jolani.
 }
 \seealso{
-\code{\link{mice},\link{mice.impute.2l.2stage.norm},\link{mice.impute.2l.jomo}}
+\code{\link[mice]{mice}} \code{\link{mice.impute.2l.2stage.norm}} \code{\link{mice.impute.2l.jomo}}
 }
 
 \keyword{mice}

@@ -62,7 +62,7 @@ Missing binary variables should be included as two-level factor type variables i
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{mice}}
+\code{\link[mice]{mice}}
 }
 \examples{
 require(mice)

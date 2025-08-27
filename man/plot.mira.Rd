@@ -28,7 +28,7 @@ Vincent Audigier \email{vincent.audigier@cnam.fr}
 }
 
 \seealso{
-\code{\link{mice}}, \code{\link[=mids-class]{mira}}
+\code{\link[mice]{mice}} \code{\link[mice]{mids}}
 }
 \examples{
 

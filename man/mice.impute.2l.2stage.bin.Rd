@@ -58,7 +58,7 @@ Vincent Audigier \email{vincent.audigier@cnam.fr}
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{mice},\link{mice.impute.2l.glm.bin},\link{mice.impute.2l.jomo}}
+\code{\link[mice]{mice}} \code{\link{mice.impute.2l.glm.bin}} \code{\link{mice.impute.2l.jomo}}
 }
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the

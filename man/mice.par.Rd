@@ -139,7 +139,7 @@ Performs multiple imputation of \code{m} tables in parallel by generating \code{
 }
 
 \value{
-Returns an S3 object of class \code{\link[=mids-class]{mids}} (multiply imputed data set)
+Returns an S3 object of class mids-class (multiply imputed data set)
 }
 
 \references{
@@ -173,7 +173,7 @@ Vincent Audigier \email{vincent.audigier@cnam.fr}
 
 
 \seealso{
-\code{\link{mice},\link{parallel}}
+\code{\link[mice]{mice}} \code{\link{parallel}}
 }
 \examples{
 
