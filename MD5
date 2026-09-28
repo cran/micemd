@@ -1,6 +1,6 @@
-d06d2c3dc0db4a2114ef9396de7793bd *DESCRIPTION
-43c1d2af5367cf6244f04dcbba531ce6 *NAMESPACE
-38dccf3f89c5faaa8870bdcfec26b047 *R/copulaIPD.R
+c639ae86c00db7b8c3b0d534599269dc *DESCRIPTION
+2487ea36d10d5c7bcac6aa5d16f5900b *NAMESPACE
+ff2ab448c7338ca24c918f06ba0570e0 *R/copulaIPD.R
 cbc47b2b2fff5bf68d5a8a694e67ecc4 *R/cov_mat_vector.R
 7f62654c35d1fc3a1e1027b0d2dcb3a8 *R/draw_cond_theta.R
 598037ba5ff92087a1c121b7444d02a6 *R/draw_theta_psi_mar.R
@@ -24,14 +24,14 @@ fa35cdc47cf4817c634af3f512b1392a *R/overimpute.R
 33c8b68685fe8dbaa3318499330d948b *R/plot.mira.R
 4f33628c99d4bd78a8c35526f8369d66 *R/star_sporadic.R
 1c02cb7284a875480d32feca08b3bd51 *R/star_systematic.R
-1dda19015f0aa969acee990c150e3ac9 *build/partial.rdb
+ba582b375e5afde780e991c9b7711c6a *build/partial.rdb
 b828c50f1f34b8d6b32a7c22c1444be1 *data/CHEM97Na.rda
 58509c275fdf7e148b33871852e40542 *data/IPDNa.rda
 1b3691cd6ea7d1223c6df93bc464db4f *data/Obesity.rda
 5b122fdd9fe01bbd107dfced54746796 *man/CHEM97Na.Rd
 3ed1cd7560b1b9b93d5d4f05b1c13b28 *man/IPDNa.Rd
 ab07547d8a1bc7433e8135015ea6c7dc *man/Obesity.Rd
-89dc9150ebe13dde8863602857cbd92a *man/find.defaultMethod.Rd
+a58ddf46204c534634ccd3b0ed425a2b *man/find.defaultMethod.Rd
 7df060d6cd7956f8471ee9052863ca55 *man/mice.impute.2l.2stage.bin.Rd
 1a3a67eb075670c778fe0bcac97a06b1 *man/mice.impute.2l.2stage.heckman.Rd
 b8177a8c1e46e696f5b668e64c89e645 *man/mice.impute.2l.2stage.norm.Rd

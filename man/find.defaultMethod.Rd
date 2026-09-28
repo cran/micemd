@@ -81,6 +81,7 @@ Vincent Audigier \email{vincent.audigier@cnam.fr}
 }
 \examples{
 
+  require(mice)
   data(CHEM97Na)
   
   ind.clust <- 1#index for the cluster variable

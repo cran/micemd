@@ -6,8 +6,6 @@ copulaIPD <- function(data, sel, out, family, send) {
                          data = data,
                          margins = c("probit", ifelse(family=="binomial","probit","N")),
                          model = "BSS",
-                         gamlssfit = TRUE,
-                         extra.regI = "sED",
                          parscale = TRUE),
              silent = TRUE)
   
